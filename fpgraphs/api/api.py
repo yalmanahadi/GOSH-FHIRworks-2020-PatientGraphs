@@ -1,6 +1,6 @@
 import os
 import flask
-from flask import request, jsonify, render_template
+from flask import request, render_template
 import sys
 from main import *
 
