@@ -60,8 +60,10 @@ def generate_graph(observation, tupleList, yaxis, xaxis):
     )
 
     #plotly.offline.plot(fig, filename=os.path.join("App/api/webdocs/",  ID + '-' + observation + '.html'), auto_open=False)
-    plotly.offline.plot(fig, filename=os.path.join("App/api/webdocs/", 'result.html'), auto_open=False)
+    
     #fig.write_html("/api/webdocs/" + ID + '-' + observation + '.html', auto_open = True)
+
+    return fig
 
 def generate_graphs():
     patient_info_title = health_check()
@@ -93,8 +95,7 @@ def generate_graphs():
 
     # Update title and height
     fig.update_layout(title_text=fhir.get_patient(ID).full_name() + health_check() , height=700)
-
-    plotly.offline.plot(fig, filename=os.path.join("App/api/webdocs/", 'result.html'), auto_open=False)
+    return fig
 
 def health_check():
     gender = patient.gender.lower()
@@ -124,8 +125,28 @@ def health_check():
         else:
             result += ", HR = Below Normal"
     return result
+    
    
+def write_to_html(fig, path, filename):
+    plotly.offline.plot(fig, filename=os.path.join(path, filename), auto_open=False)
+    return "result.html" 
 
+def create_bmi_graph(id):
+    get_data(id)
+    return generate_graph("BMI", BMI, yaxis="BMI Percentile Per Age and Gender (%)", xaxis ="Date of Observation")
 
+def create_dbp_graph(id):
+    get_data(id)
+    return generate_graph("DBP", DBP, yaxis="Diastolic Blood Pressure (mm[Hg])", xaxis ="Date of Observation")
 
+def create_sbp_graph(id):
+    get_data(id)
+    return generate_graph("SBP", SBP, yaxis="Systolic Blood Pressure (mm[Hg])", xaxis ="Date of Observation")
 
+def create_hr_graph(id):
+    get_data(id)
+    return generate_graph("HR", HR, yaxis="Heart Rate (beats\m)", xaxis ="Date of Observation")
+
+def create_all_graphs(id):
+    get_data(id)
+    return generate_graphs()
