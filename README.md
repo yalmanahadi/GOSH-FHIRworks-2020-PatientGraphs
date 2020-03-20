@@ -15,6 +15,8 @@ The functions of main and thier use are listed below:
 3. generate_graphs() generates all the above mentioned graphs in a single figure
 4. write_to_html(fig, path, fileName) takes a plotly figure, a path and a file name and writes the figure to the given path with the given file name (must be a .html)
 
+NOTE: In order to run this project, a FHIR dotnet server needs to be running alongside the project api.
+
 ------------------------------------------------------------------------------------
 
 In order to run this project, the requirements must be installed with:
