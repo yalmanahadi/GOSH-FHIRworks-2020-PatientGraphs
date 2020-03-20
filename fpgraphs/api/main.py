@@ -127,8 +127,8 @@ def health_check():
     return result
     
    
-def write_to_html(fig, path, filename):
-    plotly.offline.plot(fig, filename=os.path.join(path, filename), auto_open=False)
+def write_to_html(fig, path, fileName):
+    plotly.offline.plot(fig, filename=os.path.join(path, fileName), auto_open=False)
     return "result.html" 
 
 def create_bmi_graph(id):
