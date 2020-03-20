@@ -76,10 +76,10 @@ def generate_graphs():
     )
 
     # Add traces
-    fig.add_trace(go.Scatter(x =HRdata[0], y = HRdata[1] ), row=1, col=1)
-    fig.add_trace(go.Scatter(x =BMIdata[0], y = BMIdata[1] ), row=1, col=2)
-    fig.add_trace(go.Scatter(x =SBPdata[0], y = SBPdata[1] ), row=2, col=1)
-    fig.add_trace(go.Scatter(x =DBPdata[0], y = DBPdata[1] ), row=2, col=2)
+    fig.add_trace(go.Scatter(x =HRdata[0], y = HRdata[1], name="Heart Rate" ), row=1, col=1)
+    fig.add_trace(go.Scatter(x =BMIdata[0], y = BMIdata[1], name="BMI" ), row=1, col=2)
+    fig.add_trace(go.Scatter(x =SBPdata[0], y = SBPdata[1], name="Systolic BP" ), row=2, col=1)
+    fig.add_trace(go.Scatter(x =DBPdata[0], y = DBPdata[1], name="Diastolic BP" ), row=2, col=2)
 
     # Update xaxis properties
     fig.update_yaxes(title_text="Heart Rate (beats\m)", row=1, col=1)
@@ -133,19 +133,19 @@ def write_to_html(fig, path, fileName):
 
 def create_bmi_graph(id):
     get_data(id)
-    return generate_graph("BMI", BMI, yaxis="BMI Percentile Per Age and Gender (%)", xaxis ="Date of Observation")
+    return generate_graph("Body Mass Index", BMI, yaxis="BMI Percentile Per Age and Gender (%)", xaxis ="Date of Observation")
 
 def create_dbp_graph(id):
     get_data(id)
-    return generate_graph("DBP", DBP, yaxis="Diastolic Blood Pressure (mm[Hg])", xaxis ="Date of Observation")
+    return generate_graph("Diastolic Blood Pressure", DBP, yaxis="Diastolic Blood Pressure (mm[Hg])", xaxis ="Date of Observation")
 
 def create_sbp_graph(id):
     get_data(id)
-    return generate_graph("SBP", SBP, yaxis="Systolic Blood Pressure (mm[Hg])", xaxis ="Date of Observation")
+    return generate_graph("Systolic Blood Pressure", SBP, yaxis="Systolic Blood Pressure (mm[Hg])", xaxis ="Date of Observation")
 
 def create_hr_graph(id):
     get_data(id)
-    return generate_graph("HR", HR, yaxis="Heart Rate (beats\m)", xaxis ="Date of Observation")
+    return generate_graph("Heart Rate", HR, yaxis="Heart Rate (beats\m)", xaxis ="Date of Observation")
 
 def create_all_graphs(id):
     get_data(id)
